@@ -1,3 +1,3 @@
 # Farm Management Information Systems
 
-Ekylibre is a farm management information system (aka FMIS) web application. Apache OFBiz is an open-source product for business process automation. Apache Ditto is a software framework for digital twins, a virtual representation of devices in the real world. Odoo's Manufacturing Resource Planning (MRP) module is a comprehensive solution designed to streamline manufacturing processes
+Ekylibre is a farm management information system (aka FMIS) web application. Apache OFBiz is an open-source product for business process automation. GeoServer is an open-source server for sharing geospatial data. Apache Ditto is a software framework for digital twins, a virtual representation of devices in the real world. Odoo's Manufacturing Resource Planning (MRP) module is a comprehensive solution designed to streamline manufacturing processes
