@@ -4,31 +4,61 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="wE-V2eURaX7iaofwGaKd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="120" y="250" width="680" height="170" as="geometry" />
+        <mxCell id="wE-V2eURaX7iaofwGaKd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="400" width="680" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-2" value="L0: Financial Foundation" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="250" width="680" height="40" as="geometry" />
+        <mxCell id="wE-V2eURaX7iaofwGaKd-2" value="L0: Financial Foundation" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="400" width="680" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-3" value="Dividend Distribution" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="310" width="120" height="60" as="geometry" />
+        <mxCell id="wE-V2eURaX7iaofwGaKd-3" value="Dividend Distribution" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="180" y="460" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-4" value="Rural Time Bank" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="310" width="120" height="60" as="geometry" />
+        <mxCell id="wE-V2eURaX7iaofwGaKd-4" value="Rural Time Bank" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="460" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-5" value="Land Banking" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="620" y="310" width="120" height="60" as="geometry" />
+        <mxCell id="wE-V2eURaX7iaofwGaKd-5" value="Land Banking" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="620" y="460" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="wE-V2eURaX7iaofwGaKd-3" target="wE-V2eURaX7iaofwGaKd-4">
+        <mxCell id="wE-V2eURaX7iaofwGaKd-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="wE-V2eURaX7iaofwGaKd-3" target="wE-V2eURaX7iaofwGaKd-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="310" as="sourcePoint" />
-            <mxPoint x="440" y="260" as="targetPoint" />
+            <mxPoint x="390" y="460" as="sourcePoint" />
+            <mxPoint x="440" y="410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="wE-V2eURaX7iaofwGaKd-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="wE-V2eURaX7iaofwGaKd-4" target="wE-V2eURaX7iaofwGaKd-5">
+        <mxCell id="wE-V2eURaX7iaofwGaKd-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="wE-V2eURaX7iaofwGaKd-4" target="wE-V2eURaX7iaofwGaKd-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="310" as="sourcePoint" />
-            <mxPoint x="440" y="260" as="targetPoint" />
+            <mxPoint x="390" y="460" as="sourcePoint" />
+            <mxPoint x="440" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="UfQfirNkdjwXvX7T2L5A-1" target="wE-V2eURaX7iaofwGaKd-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="110" width="680" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-2" value="L1: Field Perception &amp;amp; Cold Chain Logistics" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="110" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-3" value="Smart IoT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-4" value="FEFO Cold Chain" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-5" value="DNA Integrity" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="UfQfirNkdjwXvX7T2L5A-3" target="UfQfirNkdjwXvX7T2L5A-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="170" as="sourcePoint" />
+            <mxPoint x="440" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="UfQfirNkdjwXvX7T2L5A-4" target="UfQfirNkdjwXvX7T2L5A-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="170" as="sourcePoint" />
+            <mxPoint x="440" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
