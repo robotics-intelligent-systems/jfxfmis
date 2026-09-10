@@ -49,6 +49,21 @@
 
 ------------------------------------------------------------------------
 
+<p align="center">
+  <img
+    src="farm-management-architecture.jpg"
+    alt="JFXFMIS — AI-Powered Farm Management Information System Architecture"
+    width="100%"
+  />
+</p>
+
+<p align="center">
+  <em>
+    Open-source architecture for AI-powered farm management, precision agriculture,
+    IoT, GIS, robotics, digital twins, analytics and sustainable agricultural operations.
+  </em>
+</p>
+
 ## Description and Context
 
 **jfxfmis / OpenTwin AI Farm Management Information System**
