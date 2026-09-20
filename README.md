@@ -46,6 +46,9 @@
 -   [Data Architecture](#data-architecture)
 -   [Security Privacy and Governance](#security-privacy-and-governance)
 -   [Technology Compendium](#technology-compendium)
+-   [Compendium Integration Architecture](#compendium-integration-architecture)
+-   [Open AI and Simulation Workflows](#open-ai-and-simulation-workflows)
+-   [Integration Profiles and Delivery Gates](#integration-profiles-and-delivery-gates)
 -   [User Guide](#user-guide)
 -   [Installation Guide](#installation-guide)
 -   [Dependencies](#dependencies)
@@ -833,103 +836,263 @@ from public-facing application and AI layers.
 
 ## Technology Compendium
 
-The original repository references multiple open-source or research
-projects. They are reorganized below by architectural role rather than
-treated as a single mandatory stack.
+This expanded catalog maps the 26 supplied references to concrete integration roles. It replaces the earlier flat catalog while preserving the wider OpenTwin FMIS scope.
 
-  ---------------------------------------------------------------------------
-  Domain                  Candidate / Reference   Architectural Role
-  ----------------------- ----------------------- ---------------------------
-  Humanoid robotics       HOPE Jr                 Robotics research reference
+**Status:** documentation and proposed adapters only. Source descriptions reviewed on 2026-09-20; no integration, trained model, validated agronomic recommendation or hardware deployment is implied. Pin and qualify each selected release, license, dependency and data source before implementation.
 
-  Humanoid robotics       QingLoong               Robotics research reference
+### 1. Farm operations, ERP and agroindustry
 
-  Farm ERP                Odoo Farm               Farm/agroindustry
-                                                  management
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [Odoo Farm](https://github.com/jeffery9/odoo-farm) | Farm/agroindustry ERP alternative covering production and business workflows | Qualify its Odoo branch and individual modules; upstream breadth does not establish validated crop or twin models |
+| [OCA vertical-agriculture](https://github.com/OCA/vertical-agriculture) — Odoo verticalization for farms and agroindustries | Community agricultural modules for an Odoo-based deployment | “Verticalization” means industry specialization, not necessarily vertical farming; check module-level licenses and matching Odoo versions |
+| [ERPNext Agriculture](https://github.com/frappe/agriculture) | Crop, land, soil, water, weather, disease and fertilizer records | Separate agriculture app with Frappe/ERPNext dependencies; verify branch compatibility and APIs |
+| [LiteFarm](https://github.com/LiteFarmOrg/LiteFarm) | Diversified-farm operations and participatory farm-data workflows | Map activities and farm geometry through qualified exports/APIs; software records do not by themselves grant organic or other certification |
+| [farmOS](https://github.com/farmOS/farmOS) | Farm assets, planning and operational records | Candidate primary FMIS; verify version-specific entities, authorization and supported API behavior |
+| [Tania](https://github.com/usetania/tania-core) | Alternative farm-management reference | The current README inspected is minimal; release, maintenance, feature coverage, license and integration interfaces remain qualification items |
+| [Ekylibre](https://github.com/ekylibre/ekylibre) | Farm-management and business operations alternative | Rails/PostgreSQL/PostGIS stack; AGPLv3 upstream, with release-specific dependencies to qualify |
+| [GrowGood](https://gitlab.com/growgood/growgood-docs) | Regenerative-farming records and resource/process interoperability reference | Official architecture uses ValueFlows and JSON-LD; qualify implementation maturity and specific component licenses rather than treating documentation as a deployable stack |
 
-  IoT                     ThingsBoard             Telemetry and dashboards
+Use one system of record for each business domain. A deployment may pair farmOS for field activities with an ERP for finance and stock, but it must define which system owns each entity. Alternative full FMIS products should not simultaneously overwrite the same crop, field or work-order record.
 
-  Grazing                 Grazing Manager         Seasonal grazing planning
+### 2. IoT, remote connectivity and weather
 
-  Farm platform           GrowGood                Open farming-platform
-                                                  reference
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [ThingsBoard](https://github.com/thingsboard/thingsboard) | Device management, telemetry processing, rule-based events and dashboards | Qualify Community Edition capabilities separately from commercial/cloud features; retain device calibration and quality metadata outside dashboard-only views |
+| [Farm Data Relay System (FDRS)](https://github.com/timmbogner/Farm-Data-Relay-System) | Remote sensor transport through gateways and repeaters, with MQTT bridge options | Uses ESP-NOW and LoRa paths; not inherently LoRaWAN. Qualify radio hardware, coverage, payload mapping, security and offline behavior |
+| [The Weather Service API — OpenAgri Weather Service](https://github.com/agstack/OpenAgri-WeatherService) | Weather forecasts/history and agricultural indicators | Early-stage project; some features require an OpenWeather API key. Self-hosting the code does not remove upstream data-service terms or availability limits |
 
-  Forestry                SIMANFOR                Forest-management
-                                                  simulation
+Preserve forecast issue time, valid time, retrieval time, provider, location and uncertainty separately from measured station observations. Cached data must retain its age; loss of connectivity must not silently convert an old forecast into a current observation.
 
-  ERP                     ERPNext Agriculture     Crop, land, soil, water and
-                                                  farm records
+### 3. Grazing, forestry and aquatic management scenarios
 
-  Digital twins           farm-twin               Agricultural digital-twin
-                                                  reference
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [Grazing Manager](https://github.com/Dornawcox/Grazing-) | Map-based seasonal paddock/herd planning and forage observations | JSON export provides an integration starting point; localStorage and CDN dependencies need offline testing. Default recovery periods and forage formulas require local calibration |
+| [SIMANFOR](https://github.com/simanfor) / [official documentation index](https://github.com/simanfor/.github/blob/main/docs/more_info_english.md) | Compare forest-management scenarios using inventories and selected growth models | Public manuals/model descriptions do not establish that every simulator component is freely redistributable; verify executable access, model license and species/site applicability |
+| [Slick](https://github.com/Blue-Matter/Slick) | R-based visualization and comparison of Management Strategy Evaluation results | Primarily fisheries MSE outputs; not a crop-growth solver or a recirculating-aquaculture physics model |
 
-  Containers              Rancher                 Container-management
-                                                  reference
+Keep forestry, grazing, fisheries and aquaculture as separate model domains. Cross-domain comparison requires explicitly shared indicators and assumptions, not reuse of model outputs under a different domain label.
 
-  Geospatial AI           FarmVibes.AI            Multimodal agricultural
-                                                  geospatial ML
+### 4. Digital twins and equation-based simulation
 
-  FMIS                    LiteFarm                Farm management
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [{ farm-twin }](https://github.com/digitaldairychain/farm-twin) | Agricultural twin implementation reference for state, assets and operational observations | Python/MongoDB-oriented upstream and AGPLv3 licensing; adapt to the canonical JFXFMIS model rather than assuming schema compatibility |
+| [LibRAS](https://github.com/FishSim/LibRAS) — Modelica recirculating aquaculture library | Water-loop and RAS scenario simulation | Upstream documents an old OpenModelica 1.12 environment and a 1.13 problem. Current compiler/library compatibility and numerical behavior must be tested |
 
-  FMIS                    farmOS                  Farm planning and records
+A Modelica adapter should first support reproducible offline runs and output ingestion. FMI export or live co-simulation is optional and requires separate compiler/exporter verification; no native FMU support is assumed for LibRAS. A dashboard or asset registry alone is not a calibrated predictive twin.
 
-  Agricultural ML         AgML                    Agricultural ML framework
+### 5. Agricultural AI and geospatial intelligence
 
-  Farm robotics           FarmBot                 Robot/API/MQTT reference
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [FarmVibes.AI](https://github.com/microsoft/farmvibes-ai) | Geospatial workflows combining imagery, weather and spatiotemporal data | Supports local-cluster workflows; Azure is not mandatory for every profile. Qualify workflow images, data access, compute needs and region/season suitability |
+| [AgML](https://github.com/Project-AgML/AgML) | Agricultural ML datasets, model workflows and reproducible evaluation | Dataset licenses, class definitions and collection conditions differ; library availability does not grant uniform rights to every dataset |
 
-  FMIS                    Tania                   Farm-management reference
+Use these as specialized analytical adapters behind a shared model registry. Geospatial masks, crop detections and estimates need provenance and validation before becoming operational farm facts.
 
-  FMIS                    Ekylibre                Farm-management information
-                                                  system
+### 6. Agricultural and warehouse robotics
 
-  Analytics               Slick                   MSE
-                                                  visualization/exploration
-                                                  reference
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [FarmBot Web App](https://github.com/FarmBot/Farmbot-Web-App) | Reference for farm design, sequences, REST resources and MQTT-based robot communication | Begin with read-only state and simulated missions; hardware/firmware versions and command semantics require qualification |
+| [Warehouse Worker](https://github.com/abel-gr/warehouse-robot) | Warehouse mission planning and robot-swarm simulation reference | The project uses Unity, Coppelia and external services in parts of its workflow; it is not automatically an entirely free-software runtime or production robot fleet manager |
 
-  Warehouse robotics      Warehouse Worker        Autonomous logistics
-                                                  reference
+For a strictly free-software profile, reimplement the required scenario contract in a qualified open simulator if the reference runtime cannot meet the deployment's requirements. This would be new integration work, not a provided Warehouse Worker feature.
 
-  Simulation              Modelica RAS library    Recirculating aquaculture
-                                                  simulation
+### 7. Warehouse operations, enterprise integration and migration
 
-  IoT connectivity        Farm Data Relay System  Remote-device communication
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [Odoo Warehouse Management Addons](https://github.com/OCA/stock-logistics-warehouse) | Warehouse/stock workflow extensions for the selected Odoo installation | Match Odoo branch and per-addon dependencies/licenses; authoritative stock changes belong to the stock system |
+| [Odoo to ERPNext migration](https://github.com/frappe/odoo_to_erpnext) | Offline migration research and mapping reference | A migration utility is not a continuous synchronization service; verify supported versions and actual coverage before moving data |
+| [TOTVS Java Framework Samples](https://github.com/RafaelFCarneiro/tjf-samples) | Java enterprise-integration patterns for an optional TOTVS environment | Reviewed samples state that referenced Maven artifacts are accessible only to TOTVS collaborators. Treat as restricted-dependency reference until access and terms are established |
 
-  Enterprise framework    TOTVS Java Framework    Enterprise integration
-                          Samples                 reference
+Migration requires a staging copy, field mapping, entity counts, stock/financial reconciliation where applicable, exception report, backup and rollback plan. Do not infer that a short migration README supports every Odoo/ERPNext release or transfers custom farm modules.
 
-  Weather                 Weather Service API     Weather integration
+### 8. Distributed infrastructure and agricultural data exchange
 
-  Warehouse               Odoo Warehouse          Warehouse integration
-                          Management Addons       
+| Candidate and source | Proposed JFXFMIS role | Qualification boundary |
+|---|---|---|
+| [Rancher](https://github.com/rancher/rancher) | Optional management of Kubernetes deployments | Infrastructure, not a livestock ranch-management application; unnecessary for a small single-host pilot |
+| [Microsoft Orleans](https://github.com/dotnet/orleans) | Optional .NET virtual-actor implementation for farm/asset workflows and stateful coordination | Not a database or farm model; define grain identity, persistence, concurrency and recovery explicitly |
+| [AgGateway ADAPT](https://github.com/AgGateway-ADAPT/ADAPT) — agricultural data interoperability toolkit for .NET | Import/export mapping of agricultural operation data | Reviewed framework instructions reference older .NET toolchains; qualify selected framework/plugin versions and formats. Do not assume a universal connector or conflate it with other ADAPT products |
 
-  Migration               Odoo → ERPNext          ERP migration research
-                          resources               
+ADAPT exchange plugins and schemas need independent qualification. Units, coordinate systems, product identifiers, task semantics and machine-specific metadata must survive a round trip.
 
-  Distributed apps        Microsoft Orleans       Cloud-native distributed
-                                                  architecture
+### Existing complementary references
 
-  Interoperability        Agriculture data        Agricultural data exchange
-                          interoperability        
-                          toolkit for .NET        
+The earlier catalog's HOPE Jr and QingLoong remain humanoid-robotics research references, outside the agricultural MVP. Arcadia/Capella, OpenAPI/AsyncAPI, Docker, Kubernetes, PostgreSQL and optional Qdrant/vector retrieval retain their existing MBSE, interface, deployment, persistence and RAG roles. Their presence in the design is not evidence of deployed services.
 
-  MBSE                    Capella / Arcadia       Systems architecture
+## Compendium Integration Architecture
 
-  API contracts           OpenAPI / AsyncAPI      Interoperable interfaces
+The proposed integration extends the existing OpenTwin layers with domain ownership, versioned adapters and reproducible evidence. It does not require installing the whole catalog.
 
-  Containers              Docker                  Reproducible deployment
+```mermaid
+flowchart TD
+  A["Sensors and field observations"] --> B["Edge buffer and IoT adapter"]
+  C["Weather and geospatial sources"] --> D["Validation and provenance"]
+  B --> D
+  E["FMIS and ERP adapters"] --> D
+  D --> F["Farm twin state and event history"]
+  F --> G["AI and scenario services"]
+  H["Approved knowledge and model registry"] --> G
+  G --> I["Recommendation and evidence"]
+  I --> J["Operator work-order review"]
+  J --> K["Bounded execution gateway"]
+  K --> L["Controller or robot"]
+  L --> B
+  J --> E
+```
 
-  Orchestration           Kubernetes              Scalable deployment
+### Domain ownership and adapter contracts
 
-  Relational data         PostgreSQL              Canonical operational
-                                                  persistence
+| Domain | Authoritative record | Proposed exchange |
+|---|---|---|
+| Field/crop operations | Selected FMIS | Field, crop cycle, activity and observation IDs |
+| Finance and stock | Selected ERP/warehouse system | Product, lot, inventory movement, work order and reconciliation status |
+| Telemetry | Ingestion service with immutable raw observations | Device, variable, value/unit, observed/received time and quality |
+| Twin state | Versioned derived state plus model registry | Validated observations, state revisions, forecasts and scenario outputs |
+| Recommendations | Decision/evidence service | Model/rule version, inputs, assumptions, uncertainty and review |
+| Execution | Local controller or robot mission manager | Approved, bounded command; acceptance, execution and observed outcome |
+| Geospatial assets | Geometry/raster catalog | CRS, geometry version, acquisition time, resolution and source rights |
 
-  Vector retrieval        Qdrant or equivalent    Optional agricultural RAG
-  ---------------------------------------------------------------------------
+Use adapter-specific mapping tables and stable external IDs. Avoid cross-writing application databases. Sync jobs require cursors/checkpoints, idempotency keys, reconciliation and explicit handling of deleted or superseded records.
 
-Before adopting any candidate component, verify its current license,
-maintenance status, compatibility, security posture, deployment
-requirements, and suitability for the intended jurisdiction and
-operational environment.
+Suggested adapters include FMIS records, Odoo/ERPNext, ThingsBoard/FDRS, weather, imagery, FarmVibes/AgML, simulation, robotics and ADAPT interchange. These are proposed adapter families, not existing repository modules.
+
+### Data contract and twin-state semantics
+
+A canonical observation should capture farm/site/asset identity, variable, value, unit, observation time, receipt time, sensor/calibration reference, source, quality and schema version. An illustrative payload:
+
+```json
+{
+  "schema_version": "jfxfmis.observation.v1",
+  "event_id": "example-observation-001",
+  "farm_id": "demo-farm",
+  "asset_id": "plot-a-probe-01",
+  "observed_at": "2026-09-20T10:00:00Z",
+  "received_at": "2026-09-20T10:00:04Z",
+  "variable": "volumetric_soil_water_content",
+  "value": 0.24,
+  "unit": "m3/m3",
+  "quality": "synthetic",
+  "calibration_ref": "demo-calibration-v1",
+  "source": "fixture"
+}
+```
+
+This fixture is not a measured field value or a recommended irrigation threshold.
+
+| Data concern | Integration rule |
+|---|---|
+| Units | Normalize with explicit conversions; preserve source units and distinguish fractions from percentages |
+| Location | Store CRS and geometry version; do not join field observations solely by place name |
+| Time | Separate observation, ingestion, forecast issue and forecast-valid times |
+| Quality | Represent missing, stale, suspect and calibrated values explicitly; never silently replace missing values with zero |
+| Provenance | Link each derived value to source observations, workflow/model revision and configuration |
+| Identity | Preserve farm, asset, herd, paddock, production-cycle and lot boundaries |
+| Model state | Label measured, estimated, forecast and simulated states separately |
+| Uncertainty | Record supported intervals/limitations; a neural-network score is not automatically calibrated confidence |
+| Offline sync | Deduplicate replayed events and resolve conflicting human edits without discarding history |
+
+The twin should retain historical state revisions and scenario branches. A hypothetical irrigation schedule, forest harvest or RAS setpoint must not overwrite the observed operational state.
+
+### Decision and command separation
+
+A recommendation may create a draft work order. Approval authorizes a bounded operational request, not unrestricted future action. Commands require target identity, parameters, expiry, idempotency key and controller-supported limits.
+
+Track proposed, approved, dispatched, acknowledged, executed and observed outcomes independently. An MQTT acknowledgement is not proof that irrigation occurred or that a robot moved stock successfully. Reject stale/duplicate commands and retain local stop/interlock behavior when cloud or AI services fail.
+
+## Open AI and Simulation Workflows
+
+### AI capability mapping
+
+| Capability | Candidate inputs/tools | Evaluation and output |
+|---|---|---|
+| Farm knowledge assistant | Approved manuals, farm procedures and versioned records; optional local model/RAG stack | Cited answers with farm-level permissions and abstention when evidence is insufficient |
+| Image-based crop analysis | AgML workflows and qualified farm imagery | Held-out farms/seasons, class-specific errors and reviewed detections |
+| Geospatial monitoring | FarmVibes.AI, field boundaries, satellite/drone imagery and weather | Validate cloud masks, resolution and temporal alignment; retain workflow provenance |
+| Irrigation planning | Calibrated soil observations, weather and selected crop/water model | Compare with rule-based baseline; draft water-demand/work-order scenarios |
+| Grazing planning | Grazing Manager paddock/herd records and local forage measurements | Compare alternative schedules under explicit assumptions; local validation of recovery/forage models |
+| Forestry scenario assistance | SIMANFOR inventories, species/model domain and management alternatives | Cite scenario/model version and compare outcomes; no extrapolation beyond validated domains |
+| Aquaculture scenario analysis | LibRAS runs and water-quality observations | Calibration, mass/energy balance and numerical checks before operational use |
+| Fisheries management review | Compatible MSE result objects and Slick | Compare management indicators across operating-model assumptions; not direct RAS control |
+| Logistics planning | Authoritative stock/lot records and simulated Warehouse Worker missions | Completion, stock reconciliation and failure handling in simulation before physical deployment |
+
+Start with deterministic rules and historical replay. Add learned models only when they answer a defined question better under a documented evaluation. No yield, water-saving, disease-detection or sustainability improvement is claimed from catalog inclusion.
+
+### RAG, local inference and bounded agents
+
+Use a replaceable inference gateway so that a qualified local model can be selected independently of the FMIS. Model weights, runtime, datasets and retrieved documents have separate licenses. Optional cloud inference must follow the farm's sharing policy.
+
+Separate permissions for reading farm records, running simulations, creating draft work orders and changing operational state. A proposed MCP interface may expose asset lookup, observation retrieval, weather lookup, scenario launch and draft recommendations. These are design intentions, not implemented tools.
+
+Retrieved documents, sensor payloads and uploaded farm files are untrusted inputs, not instructions that can alter agent permissions. Log model version, prompt/configuration, retrieved sources, invoked tools and reviewer decisions. Agricultural knowledge should be grounded in approved local context; generated quantities or treatment suggestions must not bypass domain review.
+
+### Training and evaluation
+
+- Separate training and test data by farm, season or geography where appropriate; random image splits alone may leak near-duplicate scenes.
+- Preserve dataset rights, collection conditions, label definitions and consent for private farm data.
+- Evaluate against simple baselines and report false alarms, missed events, calibration and out-of-domain behavior.
+- Monitor missing sensors, seasonal shifts, camera changes and forecast-provider changes.
+- Retain a deterministic fallback when the model or a remote service is unavailable.
+- Do not train on operational records by default; use a separately authorized dataset process.
+
+### Reproducible simulation contract
+
+Each simulation run should record scenario ID, domain, model/version, initial conditions, parameter units, solver/runtime, input hashes, time horizon, seed where relevant, result artifacts and validation status.
+
+Use offline file/API exchange first. Live Modelica co-simulation, twin state assimilation and surrogate models are later profiles requiring synchronization/error studies. SIMANFOR, LibRAS and fisheries MSE operate on different timescales and assumptions; orchestration does not make them one coupled physical model.
+
+## Integration Profiles and Delivery Gates
+
+| Profile | Minimal scope | Evidence before expansion |
+|---|---|---|
+| Open farm-records pilot | One FMIS plus farm/field/crop registry | Export/import mapping, role checks and record reconciliation |
+| IoT twin pilot | Synthetic or recorded FDRS/ThingsBoard observations plus weather fixture | Units, duplicate delivery, stale data, restart and offline replay checks |
+| ERP/warehouse pilot | One ERP adapter and lot/stock mapping | Inventory totals, transactional ownership and rollback/reconciliation |
+| AI analysis pilot | One dataset/model workflow plus non-AI baseline | Held-out evaluation and reproducible source/model versions |
+| Simulation pilot | One qualified LibRAS or forestry scenario | Reference case, numerical checks and clear model applicability |
+| Robotics pilot | Simulated work orders and execution receipts | Timeout, duplicate command, cancellation and observed-result checks |
+| Distributed deployment | Optional Orleans services and Rancher-managed infrastructure | Persistence/recovery tests and measured load needs |
+
+The smallest executable target remains the README's observation-to-decision MVP. It can use synthetic observations and a weather fixture without a proprietary cloud account. A live OpenAgri deployment using third-party weather data is a separate profile with its own terms and credentials.
+
+### Implementation sequence
+
+1. Select a primary FMIS and define authoritative ownership of field, crop, work-order and stock records.
+2. Pin dependencies and resolve licensing/access gaps, especially TOTVS artifacts, simulation runtimes and dataset terms.
+3. Define canonical observation, asset, twin-state, recommendation and command-result schemas.
+4. Build one read-only FMIS adapter and one telemetry replay path; establish a local rule-based baseline.
+5. Add weather with explicit freshness/valid-time handling and a versioned twin history.
+6. Add one AI or simulation workflow with reproducible results and operator-reviewed recommendations.
+7. Connect approved work orders to a simulated executor; only then qualify selected physical controllers.
+8. Extend to ERP, grazing, forestry, aquaculture and warehouse profiles as independent, tested adapters.
+
+### Qualification and source register
+
+For each candidate, record canonical source URL, release/commit, license files, dependency and dataset terms, runtime/API versions, maintenance evidence, supported profile, adapter owner and known limitations.
+
+Progress is **cataloged → source/license qualified → adapter implemented → interface tested → scenario validated → operationally evaluated**. Documentation links and upstream tests do not advance a JFXFMIS adapter automatically.
+
+Specific findings to carry into implementation:
+
+- Odoo Farm and OCA modules must be aligned by Odoo release; module licenses may differ.
+- ERPNext Agriculture is a separate application whose supported compatibility must be tested.
+- Tania's inspected README is insufficient to establish current integration capabilities.
+- TOTVS samples reference access-restricted framework artifacts; they are not part of the fully open MVP.
+- OpenAgri code availability does not imply unrestricted weather data or a live local-station connector.
+- LibRAS carries legacy compiler assumptions; modern OpenModelica compatibility is unverified.
+- Warehouse Worker includes simulation/service dependencies that need a separate free-software assessment.
+- ADAPT's reviewed build instructions are legacy; framework and format-plugin versions require a compatibility matrix.
+
+### Documentation validation
+
+This expansion covers all 26 supplied entries, preserves the existing farming domains and MVP, and introduces no executable code or deployed services. Runtime, agronomic, numerical and hardware tests remain implementation work. The repository layout, APIs and installation profiles shown elsewhere in this README are targets unless actual tested implementation files are supplied.
+
 
 ------------------------------------------------------------------------
 
