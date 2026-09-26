@@ -15,7 +15,7 @@
 </p>
 
 
-## OpenTwin AI Farm Management Information System
+## OpenTwin Agentic AI Farm Management Information System
 
 > An open, modular reference architecture for AI-assisted farm
 > management, agricultural digital twins, IoT/edge sensing, geospatial
