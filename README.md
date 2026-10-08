@@ -15,13 +15,21 @@
 </p>
 
 
-## OpenTwin Agentic AI Farm Management Information System
+# OpenTwin FMIS — Farm and Offshore Blue Economy Digital Twins
 
-> An open, modular reference architecture for AI-assisted farm
-> management, agricultural digital twins, IoT/edge sensing, geospatial
-> intelligence, simulation, automation, robotics, vertical farming,
-> aquaculture, livestock, renewable energy, and traceable agri-food
-> operations.
+JFXFMIS is an open-source integration reference for farm management, agricultural
+and marine digital twins, aquaculture, resource systems and traceable operations.
+It connects observations and operational records to versioned models, scenario
+comparison and operator-reviewed work orders through replaceable adapters.
+
+**Current status:** the repository contains architecture documentation, a software
+compendium and concept illustrations. It does not yet provide an integrated FMIS
+runtime, calibrated offshore model or executed simulation results. Catalog entries
+are candidates; the diagrams below describe proposed interfaces and workflows.
+
+The offshore extension connects floating farms, fish cages, mussel longlines,
+utilities and logistics assets to the same observation and evidence model. The
+floating airport is a concept-study interface, not a validated aviation design.
 
 ## Table of Contents
 
@@ -29,6 +37,7 @@
 -   [Vision](#vision)
 -   [Objectives](#objectives)
 -   [Reference Architecture](#reference-architecture)
+-   [CAD Concepts and Offshore Scenarios](#cad-concepts-and-offshore-scenarios)
 -   [Core Domains](#core-domains)
 -   [Digital Twin Architecture](#digital-twin-architecture)
 -   [AI and Decision Intelligence](#ai-and-decision-intelligence)
@@ -75,22 +84,21 @@ into an interoperable reference architecture for modern farm operations.
 
 The project is intended to connect:
 
-``` text
-Farm Assets
-    |
-Sensors / IoT / Weather / GIS / Machines
-    |
-OpenTwin Digital Twin Layer
-    |
-Farm Management + ERP + Knowledge
-    |
-AI / ML / Simulation / Optimization
-    |
-Decision Support + Automation
-    |
-Robotics / Irrigation / Energy / Logistics
-    |
-Traceability + Sustainability + Outcomes
+```mermaid
+flowchart TD
+  n0["Farm and offshore assets"]
+  n1["Observations and operational records"]
+  n2["Validated twin state and history"]
+  n3["AI and simulation evidence"]
+  n4["Operator review and work orders"]
+  n5["Bounded execution"]
+  n6["Measured outcomes and traceability"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
 ```
 
 The architecture is designed for conventional farms, precision
@@ -112,31 +120,17 @@ which physical assets, operational records, environmental measurements,
 models, AI services, and automation can be integrated without making the
 farm dependent on a single vendor.
 
-``` text
-                    OPENTWIN FMIS
-
-        Physical Farm          Digital Farm
-             |                      |
-   Crops / Animals / Water     Digital Twins
-   Machines / Buildings       Models / History
-             |                      |
-             +----------+-----------+
-                        |
-                Farm Data Platform
-                        |
-       +----------------+----------------+
-       |                |                |
-      AI/ML         Simulation       Management
-       |                |                |
- Forecasting       What-if Models    Planning / ERP
- Vision            Modelica          Inventory
- Optimization      MBSE              Finance
-       |                |                |
-       +----------------+----------------+
-                        |
-                Decision & Control
-                        |
-         Human Operators + Automation
+```mermaid
+flowchart TD
+  physical["Crops, animals, water and infrastructure"] --> data["Farm data platform"]
+  twins["Twin registry, models and history"] <--> data
+  data --> ai["Forecasting and vision"]
+  data --> sim["What-if simulation and MBSE"]
+  data --> erp["Planning, inventory and finance"]
+  ai --> review["Operator decision"]
+  sim --> review
+  erp --> review
+  review --> control["Approved and bounded automation"]
 ```
 
 ### Design Principles
@@ -181,40 +175,21 @@ farm dependent on a single vendor.
 
 ## Reference Architecture
 
-``` text
-┌───────────────────────────────────────────────────────────┐
-│                    EXPERIENCE LAYER                       │
-│ Web UI | Mobile | Dashboards | GIS | CLI | External Apps │
-└──────────────────────────┬────────────────────────────────┘
-                           │
-┌──────────────────────────▼────────────────────────────────┐
-│                 FARM MANAGEMENT LAYER                     │
-│ Farm | Field | Crop | Livestock | Aquaculture | Inventory│
-│ Work Orders | Finance | Warehouse | Supply Chain         │
-└──────────────────────────┬────────────────────────────────┘
-                           │
-┌──────────────────────────▼────────────────────────────────┐
-│                  OPENTWIN CORE                            │
-│ Asset Registry | Twin Registry | State | Events | Models │
-│ Relationships | Provenance | Rules | Workflow            │
-└──────────────────────────┬────────────────────────────────┘
-                           │
-┌──────────────────────────▼────────────────────────────────┐
-│              INTELLIGENCE & SIMULATION                    │
-│ AI/ML | RAG | Forecasting | Optimization | Modelica      │
-│ GIS Analytics | Computer Vision | What-if Simulation     │
-└──────────────────────────┬────────────────────────────────┘
-                           │
-┌──────────────────────────▼────────────────────────────────┐
-│                   DATA & EVENTS                           │
-│ SQL | Time Series | Object | Vector | Geospatial | Queue │
-└──────────────────────────┬────────────────────────────────┘
-                           │
-┌──────────────────────────▼────────────────────────────────┐
-│                    EDGE / OT LAYER                        │
-│ IoT | Weather | PLC | Robots | Irrigation | Cameras      │
-│ Energy | Water | Aquaculture | Machinery | Gateways      │
-└───────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+  edge["Edge / OT: sensors, weather, PLCs, cameras and robots"] --> ingest["Adapters, validation and event ingestion"]
+  ingest --> data["SQL, time series, object and geospatial storage"]
+  data <--> twin["OpenTwin: assets, state, history, models and provenance"]
+  twin <--> management["Farm operations, inventory, finance and supply chain"]
+  twin --> intelligence["AI, RAG, GIS and simulation services"]
+  intelligence --> evidence["Recommendations and scenario evidence"]
+  management <--> ui["Web, mobile, dashboards, GIS and external APIs"]
+  evidence --> ui
+  ui --> approval["Authorized work-order review"]
+  approval --> gateway["Command gateway and local interlocks"]
+  gateway --> edge
+  governance["Identity, audit, quality, safety and versioning"] -.-> ingest
+  governance -.-> approval
 ```
 
 Cross-cutting concerns:
@@ -224,40 +199,129 @@ Licensing · Sustainability · Safety · Versioning**
 
 ------------------------------------------------------------------------
 
+## CAD Concepts and Offshore Scenarios
+
+The four assets in `MBSE/CAD/` are **raster concept illustrations**, not editable
+CAD geometry, finite-element meshes, calibrated twins or simulation results.
+They define candidate engineering scenarios for the architecture above.
+
+| Concept asset | Represented scope | Candidate twin domains |
+| --- | --- | --- |
+| [Multi-level floating farm](MBSE/CAD/Overall-3D-view-of-the-Proposed-Multi-level-Floating-Farm-MFF.jpg) | Stacked growing areas, utilities, loading and marine interfaces | Crop environment, water, energy, mooring and logistics |
+| [Floating farm and land integration](MBSE/CAD/floating-farm-concept.jpg) | Greenhouse, fish production, renewable supply and shore-side operations | Aquaculture, microgrid, water quality and supply chain |
+| [Modular floating farm island](MBSE/CAD/modular-floating-farm-island-digital-twin.jpg) | Terraced agriculture, modular structures, material concepts and resource loops | Hydrodynamics, structure, irrigation and nutrient recovery |
+| [Offshore blue economy digital twins](MBSE/CAD/offshore-blue-economy-open-source-digital-twins-concept-v1.jpg) | Floating airport, fish cages, mussel longlines, support vessel and digital replica | Platform motion, mooring, flow, utilities and maintenance scenarios |
+
+![Offshore physical concept and proposed open-source digital replica](MBSE/CAD/offshore-blue-economy-open-source-digital-twins-concept-v1.jpg)
+
+The offshore image compares nominal operation, high waves, mooring degradation and
+power interruption **illustratively**. Its traces and contours are not solver
+outputs. Earlier artwork includes claims such as “patent free,” “zero waste” and
+minimal environmental impact; these are unverified image text, not project
+certifications. Environmental benefit, structural feasibility and intellectual
+property status require separate evidence. The root
+[farm-management architecture illustration](farm-management-architecture.jpg)
+is an overview, distinct from these four CAD concepts.
+
+### Proposed open-source simulation architecture
+
+| Component | Proposed role | Integration boundary |
+| --- | --- | --- |
+| [OpenFOAM](https://openfoam.org/) | Flow and wave studies | Requires suitable geometry, mesh, boundary conditions and qualified cases |
+| [OpenModelica](https://openmodelica.org/) | Equipment, energy and water-system models | Domain libraries and parameter calibration must be selected and tested |
+| [OMSimulator](https://openmodelica.org/doc/OMSimulator/master/OMSimulator/UsersGuide/html/introduction.html) | FMI-based co-simulation of compatible models | FMU export/import and coupling stability require explicit qualification |
+| [ParaView](https://www.paraview.org/) | Scientific inspection of generated datasets | Visualization is not a solver or proof of model validity |
+
+These are proposed roles, not a pre-integrated software distribution. In particular,
+OpenFOAM is not assumed to provide a native FMU adapter. Start with versioned
+batch inputs/results; introduce live coupling only after validating adapters,
+units, timing and error propagation. Mooring/structural and biological models
+require their own qualification; a flow visualization alone cannot establish
+structural integrity, fish health or environmental carrying capacity.
+
+```mermaid
+flowchart LR
+  geometry["Concept to engineering geometry"] --> mesh["Mesh and boundary conditions"]
+  mesh --> cfd["OpenFOAM case"]
+  parameters["Validated equipment and resource parameters"] --> modelica["OpenModelica model"]
+  modelica --> fmu["Qualified FMU export"]
+  fmu --> oms["OMSimulator: compatible FMUs"]
+  cfd --> results["Versioned results and metadata"]
+  modelica --> results
+  oms --> results
+  cfd -.-> adapter["Future coupling adapter: qualification required"]
+  adapter -.-> oms
+  results --> view["ParaView and analysis reports"]
+  results --> scenario["Twin scenario branch: never overwrite observed state"]
+  view --> review["Engineering review"]
+  scenario --> review
+```
+
+### Concept-to-evidence workflow
+
+```mermaid
+flowchart TD
+  concept["Select concept and engineering question"] --> assumptions["Record geometry, units, loads and assumptions"]
+  assumptions --> model["Build domain models and baseline case"]
+  model --> verify{"Numerical and reference checks pass?"}
+  verify -->|No| revise["Revise inputs or model"]
+  revise --> model
+  verify -->|Yes| cases["Run versioned scenario set"]
+  cases --> compare["Compare outputs, uncertainty and limits"]
+  compare --> review{"Engineering review accepts evidence?"}
+  review -->|No| revise
+  review -->|Yes| archive["Archive inputs, solver versions and results"]
+  archive --> proposal["Draft maintenance or operating recommendation"]
+  proposal --> approval["Separate operational approval"]
+```
+
+| Scenario | Candidate inputs | Outputs to evaluate, not claimed results |
+| --- | --- | --- |
+| Nominal operations | Defined sea state, loads, equipment and demand | Baseline motion, resource balance and service availability |
+| High waves | Wave period/direction, loading and boundary conditions | Motion response, forces and model-domain limits |
+| Mooring degradation | Qualified line/connection model and changed properties | Load redistribution and excursions; needs structural/mooring solver support |
+| Power interruption | Supply outage, storage state, equipment priorities | Unserved demand and continuity of essential loads |
+
+Every run needs a model revision, input hashes, units, solver configuration,
+initial/boundary conditions, result files and validation status. No scenario in
+this table has been executed by this documentation update.
+
+------------------------------------------------------------------------
+
 ## Core Domains
 
 ### Farm and Organization
 
 Canonical entities can include:
 
-``` text
-Organization
- └─ Farm
-     ├─ Site
-     ├─ Field / Plot
-     ├─ Greenhouse
-     ├─ Vertical Farm
-     ├─ Floating Farm
-     ├─ Aquaculture Unit
-     ├─ Livestock Unit
-     ├─ Warehouse
-     ├─ Energy System
-     └─ Equipment
+```mermaid
+flowchart TD
+  root["Organization / Farm"]
+  root --> n0["Site"]
+  root --> n1["Field / Plot"]
+  root --> n2["Greenhouse"]
+  root --> n3["Vertical Farm"]
+  root --> n4["Floating Farm"]
+  root --> n5["Aquaculture Unit"]
+  root --> n6["Livestock Unit"]
+  root --> n7["Warehouse"]
+  root --> n8["Energy System"]
+  root --> n9["Equipment"]
 ```
 
 ### Production
 
-``` text
-Season
- └─ Production Plan
-     ├─ Crop Cycle
-     ├─ Livestock Cycle
-     ├─ Aquaculture Cycle
-     ├─ Tasks
-     ├─ Inputs
-     ├─ Observations
-     ├─ Harvest
-     └─ Outcomes
+```mermaid
+flowchart TD
+  root["Season / Production Plan"]
+  root --> n0["Crop Cycle"]
+  root --> n1["Livestock Cycle"]
+  root --> n2["Aquaculture Cycle"]
+  root --> n3["Tasks"]
+  root --> n4["Inputs"]
+  root --> n5["Observations"]
+  root --> n6["Harvest"]
+  root --> n7["Outcomes"]
 ```
 
 ### Operational Records
@@ -288,26 +352,20 @@ The platform can record:
 The digital twin is a synchronized digital representation of farm assets
 and processes.
 
-``` text
-Physical Asset
-     |
-Sensors / Observations / Events
-     |
-Twin Adapter
-     |
-Digital Twin State
-     |
-+----+-------------------+
-|                        |
-Models                 History
-|                        |
-Simulation             Analytics
-|                        |
-+------------+-----------+
-             |
-      Decision Support
-             |
- Human Approval / Automation
+```mermaid
+flowchart TD
+  asset["Physical asset"] --> observations["Sensors, observations and events"]
+  observations --> adapter["Twin adapter and quality checks"]
+  adapter --> state["Observed state and revision history"]
+  state --> branch["Separate scenario snapshot"]
+  models["Versioned models and assumptions"] --> branch
+  branch --> simulation["Simulation outputs"]
+  state --> analytics["Historical analytics"]
+  simulation --> evidence["Decision evidence"]
+  analytics --> evidence
+  evidence --> review["Human review / bounded policy"]
+  review --> command["Approved command with local limits"]
+  command --> asset
 ```
 
 ### Twin Types
@@ -371,20 +429,21 @@ AI should augment rather than obscure farm decision-making.
 
 ### AI Governance
 
-``` text
-Observation
-    |
-AI Model
-    |
-Recommendation
-    |
-Evidence / Confidence / Provenance
-    |
-Human Review or Bounded Automation
-    |
-Action
-    |
-Measured Outcome
+```mermaid
+flowchart TD
+  n0["Observation"]
+  n1["AI model"]
+  n2["Recommendation"]
+  n3["Evidence, confidence and provenance"]
+  n4["Human review or bounded policy"]
+  n5["Approved action"]
+  n6["Measured outcome"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
 ```
 
 For consequential actions, the system should retain model version, input
@@ -395,18 +454,19 @@ and resulting action.
 
 ## IoT and Edge
 
-``` text
-Sensors / Machines
-       |
-Field Gateway
-       |
-Local Rules / Buffer
-       |
-MQTT / HTTP / Events
-       |
-Farm Data Platform
-       |
-Digital Twin
+```mermaid
+flowchart TD
+  n0["Sensors / Machines"]
+  n1["Field gateway"]
+  n2["Local rules and offline buffer"]
+  n3["MQTT / HTTP / Events"]
+  n4["Validation and farm data platform"]
+  n5["Digital twin"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
 ```
 
 Typical devices:
@@ -434,18 +494,19 @@ latency-sensitive.
 Geospatial data can connect farm boundaries, fields, terrain, weather,
 imagery, vegetation indexes, crop observations, and machine activity.
 
-``` text
-Satellite / Drone / GIS / Weather
-              |
-       Geospatial Pipeline
-              |
-       Feature Extraction
-              |
-          AI / ML
-              |
-      Field Digital Twin
-              |
-      Decision Support
+```mermaid
+flowchart TD
+  n0["Satellite / Drone / GIS / Weather"]
+  n1["Geospatial pipeline"]
+  n2["Feature extraction"]
+  n3["AI / ML"]
+  n4["Field twin"]
+  n5["Decision support"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
 ```
 
 The original project compendium references **FarmVibes.AI** as a
@@ -459,21 +520,14 @@ agricultural machine-learning framework.
 OpenTwin extends FMIS concepts to controlled-environment and floating
 agricultural facilities.
 
-``` text
-              Floating / Vertical Farm
-                        |
-        +---------------+---------------+
-        |               |               |
-   Crop Systems      Utilities       Logistics
-        |               |               |
- Hydroponics        Water Loop       Inventory
- Aeroponics         Energy           Cold Chain
- Climate            Nutrients        Distribution
- Lighting           HVAC             Traceability
-        |               |               |
-        +---------------+---------------+
-                        |
-                  Digital Twin
+```mermaid
+flowchart TD
+  farm["Floating / Vertical Farm"] --> crops["Hydroponics, aeroponics, climate and lighting"]
+  farm --> utilities["Water, energy, nutrients and HVAC"]
+  farm --> logistics["Inventory, cold chain and distribution"]
+  crops --> twin["Digital twin and traceability"]
+  utilities --> twin
+  logistics --> twin
 ```
 
 ### Candidate Capabilities
@@ -505,22 +559,16 @@ recirculating aquaculture systems**.
 
 OpenTwin can represent:
 
-``` text
-Water Source
-   |
-Treatment
-   |
-Fish Tank / Production Unit
-   |
-Water Quality Sensors
-   |
-Recirculation / Filtration
-   |
-Digital Twin
-   |
-Simulation + AI
-   |
-Operator Decision
+```mermaid
+flowchart TD
+  source["Water source"] --> treatment["Treatment"]
+  treatment --> tank["Fish tank / production unit"]
+  tank --> filter["Recirculation and filtration"]
+  filter --> tank
+  tank -.-> sensors["Water-quality observations"]
+  sensors --> twin["Digital twin"]
+  twin --> sim["Simulation and AI evidence"]
+  sim --> operator["Operator decision"]
 ```
 
 Typical variables:
@@ -566,18 +614,19 @@ seasonal planning resource.
 The original compendium references FarmBot and autonomous warehouse
 robotics.
 
-``` text
-FMIS / Digital Twin
-        |
- Mission / Work Order
-        |
- Automation Gateway
-        |
- Robot / Machine / Controller
-        |
- Telemetry + Result
-        |
- Twin State Update
+```mermaid
+flowchart TD
+  n0["FMIS / Digital Twin"]
+  n1["Mission / Work Order"]
+  n2["Approval and automation gateway"]
+  n3["Robot / Machine / Controller"]
+  n4["Telemetry and execution result"]
+  n5["Twin state update"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
 ```
 
 Potential automation:
@@ -601,24 +650,25 @@ services and should use appropriate engineering safeguards.
 
 ### Renewable Energy
 
-``` text
-Solar + Wind + Grid
-        |
- Energy Management
-        |
- Storage / Loads
-        |
- Farm Operations
+```mermaid
+flowchart TD
+  n0["Solar, wind and grid"]
+  n1["Energy management"]
+  n2["Storage and loads"]
+  n3["Farm operations"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
 ```
 
 ### Water
 
-``` text
-Source → Treatment → Storage → Irrigation / Aquaculture
-                         |
-                    Recirculation
-                         |
-                    Monitoring
+```mermaid
+flowchart TD
+  source["Source"] --> treatment["Treatment"] --> storage["Storage"]
+  storage --> use["Irrigation / Aquaculture"]
+  use --> recovery["Recovery and treatment"] --> storage
+  use -.-> monitoring["Water monitoring"]
 ```
 
 ### Circular Resource Model
@@ -639,22 +689,23 @@ The goal is to measure flows before claiming sustainability benefits.
 
 ## Supply Chain and Traceability
 
-``` text
-Input
-  |
-Production
-  |
-Harvest
-  |
-Processing
-  |
-Storage
-  |
-Transport
-  |
-Distribution
-  |
-Consumer / Buyer
+```mermaid
+flowchart TD
+  n0["Input"]
+  n1["Production"]
+  n2["Harvest"]
+  n3["Processing"]
+  n4["Storage"]
+  n5["Transport"]
+  n6["Distribution"]
+  n7["Consumer / Buyer"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
+  n6 --> n7
 ```
 
 Traceability records may connect lots, timestamps, locations,
@@ -672,22 +723,23 @@ The source repository includes an `MBSE` directory and explicitly
 identifies **Arcadia**, supported by **Capella**, for systems
 engineering and architecture.
 
-``` text
-Stakeholder Needs
-      |
-Operational Analysis
-      |
-System Analysis
-      |
-Logical Architecture
-      |
-Physical Architecture
-      |
-Interfaces
-      |
-Implementation
-      |
-Simulation & Validation
+```mermaid
+flowchart TD
+  n0["Stakeholder needs"]
+  n1["Operational analysis"]
+  n2["System analysis"]
+  n3["Logical architecture"]
+  n4["Physical architecture"]
+  n5["Interfaces"]
+  n6["Implementation"]
+  n7["Simulation and validation"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
+  n6 --> n7
 ```
 
 ### Engineering Domains
@@ -773,22 +825,13 @@ OpenAPI and AsyncAPI are suitable interface-contract approaches.
 
 ## Data Architecture
 
-``` text
-                   Farm Data Fabric
-                         |
-       +-----------------+------------------+
-       |                 |                  |
- Relational         Time Series        Object Storage
-       |                 |                  |
- FMIS Records       Telemetry          Images / Models
-       |
- Geospatial
-       |
- Maps / Fields / Raster / Vector
-       |
- Optional Vector Store
-       |
- Knowledge / RAG
+```mermaid
+flowchart TD
+  fabric["Farm data fabric"] --> sql["Relational: FMIS records"]
+  fabric --> ts["Time series: telemetry"]
+  fabric --> obj["Object storage: images and models"]
+  fabric --> geo["Geospatial: fields, raster and vector"]
+  fabric --> vec["Optional vector store: knowledge and RAG"]
 ```
 
 Important data properties:
@@ -1116,22 +1159,23 @@ A representative workflow is:
 
 ### Example
 
-``` text
-Soil Sensor
-    ↓
-Telemetry
-    ↓
-Field Twin
-    ↓
-Weather + Crop Model
-    ↓
-Irrigation Recommendation
-    ↓
-Operator Approval
-    ↓
-Irrigation Controller
-    ↓
-Water Use + Outcome Recorded
+```mermaid
+flowchart TD
+  n0["Soil sensor"]
+  n1["Validated telemetry"]
+  n2["Field twin"]
+  n3["Weather and crop model"]
+  n4["Irrigation recommendation"]
+  n5["Operator approval"]
+  n6["Controller and local limits"]
+  n7["Water use and outcome recorded"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
+  n6 --> n7
 ```
 
 ------------------------------------------------------------------------
@@ -1148,35 +1192,36 @@ git clone https://github.com/robotics-intelligent-systems/jfxfmis.git
 cd jfxfmis
 ```
 
+These deployment diagrams are design targets; no installation manifests or services
+are supplied by this documentation update.
+
 ### Minimal Reference Deployment
 
-``` text
-Web Application
-      |
-Core FMIS API
-      |
-PostgreSQL
-      |
-Twin / Telemetry Service
-      |
-MQTT-compatible Broker
+```mermaid
+flowchart TD
+  web["Web application"] <--> api["Core FMIS API"]
+  api <--> db["PostgreSQL"]
+  broker["MQTT-compatible broker"] --> twin["Twin / telemetry service"]
+  twin --> db
+  api <--> twin
 ```
 
 ### Extended Deployment
 
-``` text
-Core FMIS
-├─ PostgreSQL
-├─ Object Storage
-├─ MQTT / Event Broker
-├─ IoT Platform
-├─ Geospatial Service
-├─ AI/ML Service
-├─ Modelica Simulation Adapter
-├─ ERP Adapter
-├─ Robotics Gateway
-├─ Vector Retrieval
-└─ Observability
+```mermaid
+flowchart TD
+  root["Core FMIS"]
+  root --> n0["PostgreSQL"]
+  root --> n1["Object storage"]
+  root --> n2["MQTT / event broker"]
+  root --> n3["IoT platform"]
+  root --> n4["Geospatial service"]
+  root --> n5["AI / ML service"]
+  root --> n6["Modelica simulation adapter"]
+  root --> n7["ERP adapter"]
+  root --> n8["Robotics gateway"]
+  root --> n9["Vector retrieval"]
+  root --> n10["Observability"]
 ```
 
 Containerized modules should provide:
@@ -1240,6 +1285,8 @@ This separation reduces unnecessary coupling and license ambiguity.
 ------------------------------------------------------------------------
 
 ## Recommended Repository Structure
+
+The tree below is a proposed implementation layout, not an inventory of existing files.
 
 ``` text
 jfxfmis/
@@ -1313,20 +1360,13 @@ jfxfmis/
 Deliver a small but executable OpenTwin FMIS demonstrating the complete
 observation-to-decision workflow.
 
-``` text
-Sensors / Sample Data
-        |
-      MQTT
-        |
- Telemetry Service
-        |
-     Farm Twin
-        |
-     FMIS API
-        |
-   PostgreSQL
-        |
- Dashboard + Alerts
+```mermaid
+flowchart TD
+  sensors["Sensors / sample data"] --> mqtt["MQTT"] --> telemetry["Telemetry service"]
+  telemetry --> twin["Farm twin"] --> db["PostgreSQL"]
+  twin <--> api["FMIS API"]
+  db --> api
+  api --> dashboard["Dashboard and alerts"]
 ```
 
 ### MVP Capabilities
@@ -1348,18 +1388,19 @@ Sensors / Sample Data
 
 ### MVP Demonstration
 
-``` text
-Temperature + Soil Moisture
-           ↓
-       Field Twin
-           ↓
-     Decision Rule
-           ↓
- Irrigation Recommendation
-           ↓
-      Work Order
-           ↓
- Outcome + Water Consumption
+```mermaid
+flowchart TD
+  n0["Temperature and soil moisture"]
+  n1["Field twin"]
+  n2["Decision rule"]
+  n3["Irrigation recommendation"]
+  n4["Reviewed work order"]
+  n5["Outcome and water consumption"]
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
 ```
 
 ### Success Criteria
@@ -1416,6 +1457,11 @@ Temperature + Soil Moisture
 -   [ ] Agricultural knowledge/RAG.
 
 ### Phase 5 --- Simulation and MBSE
+
+-   [ ] Offshore geometry and reference-case qualification.
+-   [ ] OpenFOAM batch-result ingestion.
+-   [ ] FMI adapter and coupling-error qualification.
+-   [ ] CAD-concept-to-simulation evidence register.
 
 -   [ ] Modelica adapter.
 -   [ ] Scenario manager.
