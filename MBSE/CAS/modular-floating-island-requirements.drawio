@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="28.2.5">
+  <diagram id="page-1" name="01 · MFI · Isla agrícola flotante modular">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · MFI · Isla agrícola flotante modular" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Concepto CAD raster · Especificaciones de alto nivel propuestas · Dimensiones, cargas y umbrales pendientes; el gráfico no demuestra viabilidad." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="physical" value="SISTEMA FÍSICO&lt;br&gt;Módulos flotantes y conexiones&lt;br&gt;Terrazas e invernaderos&lt;br&gt;Materiales compuestos propuestos&lt;br&gt;Accesos y espacio interior" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="450" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="resources" value="RECURSOS Y DOMINIOS&lt;br&gt;Microred solar&lt;br&gt;Tratamiento de agua&lt;br&gt;Irrigación y recirculación&lt;br&gt;Recuperación de nutrientes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="220" width="450" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="interfaces" value="INTERFACES PRINCIPALES&lt;br&gt;Módulo ↔ módulo / unión&lt;br&gt;Casco ↔ estructura / material&lt;br&gt;Cultivos ↔ recursos compartidos&lt;br&gt;Geometría ↔ modelos de dominio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="220" width="450" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="physical" target="resources">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="resources" target="interfaces">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="twin" value="GEMELO / FMIS&lt;br&gt;Activos, sensores y observaciones&lt;br&gt;Identidad, unidades, tiempo y calidad&lt;br&gt;Historial y escenarios separados&lt;br&gt;COM-01, 02, 05, 06" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sim" value="MODELOS DE DOMINIO&lt;br&gt;Geometría y parámetros versionados&lt;br&gt;CFD, recursos y modelos especializados&lt;br&gt;Casos de referencia y sensibilidad&lt;br&gt;COM-03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="610" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="qa" value="REQUISITOS Y EVIDENCIA&lt;br&gt;MFI-01…07 + COM-01…07&lt;br&gt;Revisión por responsables de dominio&lt;br&gt;Recomendación ≠ ejecución&lt;br&gt;COM-04, 07" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="610" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="physical" target="twin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="twin" target="sim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="sim" target="qa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="Fuente CAD: modular-floating-farm-island-digital-twin.jpg&lt;br&gt;Fuente textual: README · CAD Concepts and Offshore Scenarios; arquitectura de gemelos y dominios relacionados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f4f8;strokeColor=#7b8899;fontColor=#172d46;fontSize=14;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1" link="https://github.com/robotics-intelligent-systems/jfxfmis/blob/main/MBSE/CAD/modular-floating-farm-island-digital-twin.jpg">
+          <mxGeometry x="40" y="875" width="1520" height="85" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-2" name="02 · MFI · Requisitos y aceptación">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="02 · MFI · Requisitos y aceptación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Requisitos propuestos · Pendientes de validación · P1: necesarios para validar el concepto. Umbrales y parámetros TBD se fijan antes del ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-01" value="MFI-01 · Configuración modular · P1&lt;br&gt;Identificar módulos, conexiones, revisiones y recursos compartidos." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-01" value="Verificación: Inspección + prueba · Responsable: Arquitectura naval&lt;br&gt;Aceptación: Topología y cambios trazables; cada interfaz tiene contrato." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="200" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-02" value="MFI-02 · Estabilidad y oleaje · P1&lt;br&gt;Definir cargas, flotación y respuesta de distintas configuraciones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-02" value="Verificación: Análisis especializado · Responsable: Ingeniería naval&lt;br&gt;Aceptación: Casos de oleaje y envolventes TBD revisados con evidencia numérica." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="300" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-03" value="MFI-03 · Uniones estructurales · P1&lt;br&gt;Modelar transferencia de carga y movimiento relativo en conexiones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-03" value="Verificación: Análisis + ensayo · Responsable: Estructuras&lt;br&gt;Aceptación: Límites de esfuerzo, fatiga y desplazamiento TBD verificados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="400" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-04" value="MFI-04 · Materiales marinos · P1&lt;br&gt;Comparar GFRP, refuerzo CFRP, núcleo y recubrimientos como candidatos." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-04" value="Verificación: Ensayo + revisión · Responsable: Materiales&lt;br&gt;Aceptación: Propiedades, exposición, durabilidad y ciclo de vida documentados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="500" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-05" value="MFI-05 · Agua y nutrientes · P1&lt;br&gt;Representar tratamiento, irrigación, retorno y recuperación de nutrientes." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-05" value="Verificación: Análisis + ensayo · Responsable: Agua / procesos&lt;br&gt;Aceptación: Balances y calidad de agua según tolerancias TBD; pérdidas registradas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="600" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-06" value="MFI-06 · Energía compartida · P1&lt;br&gt;Relacionar solar, demanda y distribución entre módulos." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-06" value="Verificación: Simulación + ensayo · Responsable: Energía&lt;br&gt;Aceptación: Escenario de desconexión no propaga fallos fuera de límites TBD." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="700" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MFI-07" value="MFI-07 · Reconfiguración mantenible · P1&lt;br&gt;Definir aislamiento de recursos y sustitución de módulos/conexiones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-MFI-07" value="Verificación: Revisión + demostración · Responsable: Operaciones&lt;br&gt;Aceptación: Secuencia de mantenimiento y continuidad aprobadas en ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="800" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Trazabilidad: fuente CAD/README → requisito → interfaz/modelo → caso de prueba → evidencia → revisión.&lt;br&gt;Cada evidencia incluye versión, entradas, unidades, resultados, incertidumbre y estado de validación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=14;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="920" width="1520" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-3" name="03 · MFI · Escenarios y cierre de evidencia">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="03 · MFI · Escenarios y cierre de evidencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Casos propuestos para evaluar; no son resultados de simulación. Los límites de aceptación TBD se acuerdan antes de ejecutar cada caso." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="sc0" value="SC-01 · OPERACIÓN NOMINAL&lt;br&gt;Cargas, demanda y ambiente definidos.&lt;br&gt;Evaluar estado base, balances y servicio.&lt;br&gt;Trazabilidad: MFI-01 / 05 / 06 + COM-03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="215" width="740" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="sc1" value="SC-02 · OLEAJE / MOVIMIENTO&lt;br&gt;Periodo, dirección y cargas definidos.&lt;br&gt;Evaluar respuesta y límites de modelo.&lt;br&gt;Trazabilidad: MFI-02 + COM-03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="820" y="215" width="740" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="sc2" value="SC-03 · AMARRE / CONEXIÓN&lt;br&gt;Propiedades alteradas y caso de referencia.&lt;br&gt;Evaluar carga, excursión y recuperación.&lt;br&gt;Trazabilidad: MFI-03 / 04 / 07 + COM-03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="385" width="740" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="sc3" value="SC-04 · CORTE DE ENERGÍA&lt;br&gt;Duración, carga y almacenamiento definidos.&lt;br&gt;Evaluar servicio esencial y recuperación.&lt;br&gt;Trazabilidad: MFI-06 + COM-03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="820" y="385" width="740" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="baseline" value="1 · LÍNEA BASE&lt;br&gt;Requisitos y valores TBD&lt;br&gt;Geometría / cargas / sitio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="350" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="verify" value="2 · VERIFICACIÓN&lt;br&gt;Modelos y referencia&lt;br&gt;Sensibilidad y convergencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="430" y="660" width="350" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="runs" value="3 · EVIDENCIA&lt;br&gt;Casos + hashes + revisiones&lt;br&gt;Unidades e incertidumbre" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="820" y="660" width="350" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="review" value="4 · REVISIÓN&lt;br&gt;Aceptar o corregir&lt;br&gt;Aprobación registrada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="660" width="350" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="v0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="baseline" target="verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="verify" target="runs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="runs" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="record" value="REGISTRO REQUERIDO · requisito_id, fuente y revisión, modelo/activo/interfaz, caso_id, entradas y hashes, versión del solver, unidades, resultados, limitaciones, criterio, responsable y aprobación.&lt;br&gt;TBD significa pendiente con responsable. Sin evidencia aceptada, el requisito conserva estado propuesto. COM-01…07 se definen en el diagrama de plataforma." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="860" width="1520" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
