@@ -1,94 +1,260 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
-  <diagram name="four-layers-microservice-topology" id="U-mOs4buuAvu0ItHmb-U">
-    <mxGraphModel dx="1111" dy="1706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="28.2.5">
+  <diagram id="page-1" name="01 · Plataforma FMIS y gemelos de los conceptos CAD">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · Plataforma FMIS y gemelos de los conceptos CAD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Refactor de arquitectura · Fuente: README y cuatro ilustraciones MBSE/CAD · Propuesta, no implementación ni validación ejecutada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="assets" value="ACTIVOS FÍSICOS&lt;br&gt;MFF: granja multinivel&lt;br&gt;FLI: tierra–agua y acuicultura&lt;br&gt;MFI: isla modular&lt;br&gt;OBE: sistema offshore" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="350" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="PERCEPCIÓN Y BORDE&lt;br&gt;Sensores, calibración e identidad&lt;br&gt;Tiempo, unidades y calidad&lt;br&gt;Buffer offline y controles locales&lt;br&gt;Inspecciones y eventos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="460" y="220" width="580" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="data" value="DATOS Y GEMELO&lt;br&gt;Registro de activos / geometría&lt;br&gt;Observaciones e historia&lt;br&gt;Estado derivado versionado&lt;br&gt;Escenarios separados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="220" width="450" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="fmis" value="FMIS Y OPERACIÓN&lt;br&gt;Cultivos, acuicultura e inventario&lt;br&gt;Lotes, frío y logística&lt;br&gt;Mantenimiento y recursos&lt;br&gt;Finanzas / ERP por adaptadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="350" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="models" value="ANÁLISIS Y SIMULACIÓN&lt;br&gt;OpenFOAM: flujo y oleaje&lt;br&gt;OpenModelica: agua / energía&lt;br&gt;Estructura, amarre y biología: modelos propios&lt;br&gt;OMSimulator / FMI: cualificar adaptadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="460" y="580" width="580" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="review" value="REVISIÓN Y DECISIÓN&lt;br&gt;ParaView / informes / incertidumbre&lt;br&gt;Requisitos y evidencias&lt;br&gt;Recomendaciones / órdenes borrador&lt;br&gt;Aprobación operacional separada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="580" width="450" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="observaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="assets" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="contrato" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="edge" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="evidencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="data" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="escenarios" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="models" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="demanda y parámetros" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="fmis" target="models">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="entradas validadas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="edge" target="models">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="COM-01…07 aplican a los cuatro conceptos. Primero intercambio batch versionado; co-simulación viva solo después de verificar unidades, sincronización, estabilidad y propagación de errores." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="880" width="1520" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-2" name="02 · Requisitos transversales">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="02 · Requisitos transversales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Requisitos propuestos · Pendientes de validación · P1: necesarios para validar el concepto. Umbrales y parámetros TBD se fijan antes del ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-01" value="COM-01 · Contrato de observaciones · P1&lt;br&gt;Conservar activo, variable, valor, unidad, tiempos, calidad, calibración y versión." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-01" value="Verificación: Prueba de contrato · Responsable: Datos / IoT&lt;br&gt;Aceptación: Valores ausentes/obsoletos explícitos; conversión de unidades comprobada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="200" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-02" value="COM-02 · Historia y escenarios · P1&lt;br&gt;Separar estado medido, estimado, pronosticado y simulado, con procedencia." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-02" value="Verificación: Prueba de integración · Responsable: Gemelo digital&lt;br&gt;Aceptación: Un escenario no sobrescribe observaciones; revisiones reconstruibles." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="300" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-03" value="COM-03 · Simulación reproducible · P1&lt;br&gt;Archivar geometría, parámetros, hashes, versiones, fronteras y resultados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-03" value="Verificación: Análisis + inspección · Responsable: Simulación&lt;br&gt;Aceptación: Casos repetibles y revisados; errores e incertidumbre registrados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="400" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-04" value="COM-04 · Acciones controladas · P1&lt;br&gt;Separar recomendación, aprobación, envío, acuse, ejecución y resultado observado." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-04" value="Verificación: Prueba de fallos · Responsable: Control / operaciones&lt;br&gt;Aceptación: Rechazar caducadas/duplicadas; parada local preservada sin nube." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="500" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-05" value="COM-05 · Interoperabilidad · P1&lt;br&gt;Versionar contratos y adaptadores; ensayar pérdida de enlace y replay offline." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-05" value="Verificación: Prueba de integración · Responsable: Integraciones&lt;br&gt;Aceptación: Replay idempotente y sin pérdida de historia; errores conciliados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="600" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-06" value="COM-06 · Acceso y auditoría · P1&lt;br&gt;Aplicar permisos por sitio/activo y auditar lecturas, cambios y acciones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-06" value="Verificación: Prueba positiva/negativa · Responsable: Seguridad TI&lt;br&gt;Aceptación: Accesos no autorizados rechazados; actor y revisión registrados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="700" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="COM-07" value="COM-07 · Cierre de requisitos · P1&lt;br&gt;Ligar fuente, requisito, modelo, prueba, evidencia y aprobación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="740" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="v-COM-07" value="Verificación: Inspección documental · Responsable: Requisitos / QA&lt;br&gt;Aceptación: Todo requisito en alcance tiene evidencia o excepción aprobada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="810" y="800" width="750" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Trazabilidad: fuente CAD/README → requisito → interfaz/modelo → caso de prueba → evidencia → revisión.&lt;br&gt;Cada evidencia incluye versión, entradas, unidades, resultados, incertidumbre y estado de validación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=14;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="920" width="1520" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-3" name="03 · Integración y límites de modelos">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="03 · Integración y límites de modelos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Flujos propuestos del README · La visualización no prueba validez. OpenFOAM no se presupone exportador nativo de FMU." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="geometry" value="GEOMETRÍA DE INGENIERÍA&lt;br&gt;Derivar de concepto con dimensiones&lt;br&gt;CRS, masas, cargas y revisión" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="350" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cfd" value="OPENFOAM&lt;br&gt;Malla, fronteras y caso cualificado&lt;br&gt;Flujo / oleaje; conservar metadatos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="460" y="220" width="580" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="results" value="REGISTRO DE RESULTADOS&lt;br&gt;Hashes, versiones, unidades y estado&lt;br&gt;Escenarios sin sobrescribir mediciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="220" width="450" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="params" value="PARÁMETROS VALIDADOS&lt;br&gt;Equipos, agua, energía y demanda&lt;br&gt;Estructura / amarre / biología aparte" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="350" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="modelica" value="OPENMODELICA → FMU OPCIONAL&lt;br&gt;Modelo de dominio primero en batch&lt;br&gt;Exportación FMU y OMSimulator&lt;br&gt;solo tras cualificar acoplamiento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="460" y="540" width="580" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" value="PARAVIEW + REVISIÓN&lt;br&gt;Resultados y límites de dominio&lt;br&gt;Aceptar, corregir o rechazar evidencia&lt;br&gt;Órdenes operativas requieren aprobación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="540" width="450" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="geometry" target="cfd">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="cfd" target="results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="params" target="modelica">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="modelica" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="results" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="adaptador futuro" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;dashed=1;" edge="1" parent="1" source="cfd" target="modelica">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="TBD: dimensiones, masas, cargas, condiciones de mar/sitio, especies, capacidad, autonomía, latencia y tolerancias. Cada valor tendrá responsable, fuente y caso de verificación antes de aprobar la línea base." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="855" width="1520" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="04 · Topología heredada L0–L2 (referencia)" id="legacy-topology">
+    <mxGraphModel dx="1111" dy="1706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="wE-V2eURaX7iaofwGaKd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="400" width="680" height="170" as="geometry" />
+          <mxGeometry x="120" y="640.0" width="680" height="170" as="geometry" />
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-2" value="L0: Financial Foundation" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="120" y="400" width="680" height="40" as="geometry" />
+          <mxGeometry x="120" y="640.0" width="680" height="40" as="geometry" />
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-3" value="Dividend Distribution" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180" y="460" width="120" height="60" as="geometry" />
+          <mxGeometry x="180" y="700.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-4" value="Rural Time Bank" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="400" y="460" width="120" height="60" as="geometry" />
+          <mxGeometry x="400" y="700.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-5" value="Land Banking" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="620" y="460" width="120" height="60" as="geometry" />
+          <mxGeometry x="620" y="700.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="wE-V2eURaX7iaofwGaKd-3" target="wE-V2eURaX7iaofwGaKd-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="460" as="sourcePoint" />
-            <mxPoint x="440" y="410" as="targetPoint" />
+            <mxPoint x="390" y="700.0" as="sourcePoint" />
+            <mxPoint x="440" y="650.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="wE-V2eURaX7iaofwGaKd-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="wE-V2eURaX7iaofwGaKd-4" target="wE-V2eURaX7iaofwGaKd-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="460" as="sourcePoint" />
-            <mxPoint x="440" y="410" as="targetPoint" />
+            <mxPoint x="390" y="700.0" as="sourcePoint" />
+            <mxPoint x="440" y="650.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="UfQfirNkdjwXvX7T2L5A-1" target="wE-V2eURaX7iaofwGaKd-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="110" width="680" height="170" as="geometry" />
+          <mxGeometry x="120" y="350.0" width="680" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="UfQfirNkdjwXvX7T2L5A-2" value="L1: Field Perception &amp;amp; Cold Chain Logistics" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="120" y="110" width="680" height="40" as="geometry" />
+        <mxCell id="UfQfirNkdjwXvX7T2L5A-2" value="L1: Field Perception &amp; Cold Chain Logistics" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="350.0" width="680" height="40" as="geometry" />
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-3" value="Smart IoT" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180" y="170" width="120" height="60" as="geometry" />
+          <mxGeometry x="180" y="410.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-4" value="FEFO Cold Chain" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="400" y="170" width="120" height="60" as="geometry" />
+          <mxGeometry x="400" y="410.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-5" value="DNA Integrity" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="620" y="170" width="120" height="60" as="geometry" />
+          <mxGeometry x="620" y="410.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="UfQfirNkdjwXvX7T2L5A-3" target="UfQfirNkdjwXvX7T2L5A-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="170" as="sourcePoint" />
-            <mxPoint x="440" y="120" as="targetPoint" />
+            <mxPoint x="390" y="410.0" as="sourcePoint" />
+            <mxPoint x="440" y="360.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="UfQfirNkdjwXvX7T2L5A-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="UfQfirNkdjwXvX7T2L5A-4" target="UfQfirNkdjwXvX7T2L5A-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="170" as="sourcePoint" />
-            <mxPoint x="440" y="120" as="targetPoint" />
+            <mxPoint x="390" y="410.0" as="sourcePoint" />
+            <mxPoint x="440" y="360.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="yQkjEgQFqCCNNc-DR_9K-1" target="UfQfirNkdjwXvX7T2L5A-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="120" y="-170" width="680" height="170" as="geometry" />
+          <mxGeometry x="120" y="70.0" width="680" height="170" as="geometry" />
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-2" value="L2: Vertical Industries" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="-170" width="680" height="40" as="geometry" />
+          <mxGeometry x="120" y="70.0" width="680" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="yQkjEgQFqCCNNc-DR_9K-3" value="Crop &amp;amp; Orchard" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="-110" width="120" height="60" as="geometry" />
+        <mxCell id="yQkjEgQFqCCNNc-DR_9K-3" value="Crop &amp; Orchard" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="130.0" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="yQkjEgQFqCCNNc-DR_9K-4" value="Livestock &amp;amp; Aqua" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="-110" width="120" height="60" as="geometry" />
+        <mxCell id="yQkjEgQFqCCNNc-DR_9K-4" value="Livestock &amp; Aqua" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="130.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-5" value="Food Processing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="620" y="-110" width="120" height="60" as="geometry" />
+          <mxGeometry x="620" y="130.0" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yQkjEgQFqCCNNc-DR_9K-3" target="yQkjEgQFqCCNNc-DR_9K-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="-110" as="sourcePoint" />
-            <mxPoint x="440" y="-160" as="targetPoint" />
+            <mxPoint x="390" y="130.0" as="sourcePoint" />
+            <mxPoint x="440" y="80.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="yQkjEgQFqCCNNc-DR_9K-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="yQkjEgQFqCCNNc-DR_9K-4" target="yQkjEgQFqCCNNc-DR_9K-5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="-110" as="sourcePoint" />
-            <mxPoint x="440" y="-160" as="targetPoint" />
+            <mxPoint x="390" y="130.0" as="sourcePoint" />
+            <mxPoint x="440" y="80.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
